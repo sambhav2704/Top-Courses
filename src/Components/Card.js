@@ -1,4 +1,3 @@
-
 import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc";
 
@@ -31,13 +30,13 @@ const Card = (props) => {
       <div className="relative">
         <img src={course.image.url} alt={course.image.alt} className=""></img>
 
-        <div className=" rounded-full h-[40px] w-[40px] bg-white absolute bottom-3 right-2 grid place-items-center">
+        <div className=" rounded-full h-[40px] w-[40px] bg-white absolute top-[83%] right-2 grid place-items-center">
           <button onClick={clickHandler}>
-
-            {
-              likedCourses.includes(course.id)?(<FcLike fontSize="1.75rem"/>) : (<FcLikePlaceholder fontSize="1.75rem" />)
-            }
-           
+            {likedCourses.includes(course.id) ? (
+              <FcLike fontSize="1.75rem" />
+            ) : (
+              <FcLikePlaceholder fontSize="1.75rem" />
+            )}
           </button>
         </div>
       </div>
@@ -46,7 +45,11 @@ const Card = (props) => {
         <p className=" text-white  font-semibold text-lg leading-6 ">
           {course.title}
         </p>
-        <p className=" mt-2 text-white ">{course.description}</p>
+        <p className=" mt-2 text-white ">
+          {course.description.length > 100
+            ? course.description.substr(1, 100) + "..."
+            : course.description}
+        </p>
       </div>
     </div>
   );
